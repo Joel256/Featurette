@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Typewriter test</title>
+</head>
+
+<body>
+
+    <!-- Add CSS later -->
+    <div class="container">
+        <span id="text"></span>
+    </div>
+
+    <div class="playpausebuttons">
+        <button class="play"> Play </button>
+        <button class="pause"> Pause </button>
+    </div>
+
+    <script>
+        //This is the HTML ID
+        const text = document.querySelector("#text");
+        const playButton = document.querySelector('.play');
+        const pauseButton = document.querySelector('.pause');
+        pauseButton.disabled = true; //Disable pause button by default
+
+
+
+        //This is the content to be displayed.
+        let textContentArray = "Leon awoke with a jolt as he heard a loud crash of lightning followed by the front door to his cabin opening. The sounds of the thunderstorm outside stabbing into his small cabin and his four loyal companion dogs barking and running around in a panic. Leon sprang up and rubbed his eyes, calling out to the dogs individually by name, alerted that the dogs are not in the room with him anymore. A flash of thunder through the window showed him that none of his dogs were by his side as they were when they went to bed. The dogs replied to Leon’s calls with more panicked barking from the living room. Leon throw his legs out from under the covers and got up. He called out for Rock and Roll, two of his dogs. He could hear the incessant barking getting further and further away. He grabbed his jeans and the shirt he was wearing yesterday and hastily put them back on. There was a rainstorm when they went to bed earlier but the thunder and lightning was new to him. He moved out of his bedroom and saw to his horror that the front door was wide open. The dogs were gone.".split("");
+
+
+        playButton.addEventListener('click', () => {
+            pauseButton.disabled = false;
+            playButton.disabled = true;
+
+
+
+            //This function creates the typewriter effect
+            const handleLoop = () => {
+                if (textContentArray.length) { // Checks if there is more text to display and will stop if not.
+                    textContentArray = textContentArray.reverse(); //Reverse the content so the last character becomes the first
+                    text.innerHTML += textContentArray.pop(); //Adds the last element of the array back.
+                    textContentArray = textContentArray.reverse(); //Reverses the content back to the correct order.
+                }
+            }
+
+            setInterval(handleLoop, 30); //Makes the typewriter effect repeat every X miliseconds
+
+        });
+
+        pauseButton.addEventListener('click', () => {
+            playButton.disabled = true;
+            pauseButton.disabled = false;
+
+
+
+        });
+    </script>
+
+</body>
+
+</html>

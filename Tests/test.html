@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Featurette</title>
+
+    <style>
+        #backgroundBookImage {
+            object-fit: cover;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Play / Pause Button */
+        #playPauseButton {
+            /* Make the background and border transparent */
+            background: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+
+            /* Make the mouse cursor change on hover */
+            cursor: pointer;
+
+            /* Overlay the button on the background image and position it */
+            position: absolute;
+            top: 85vh;
+            left: 47%;
+
+        }
+
+        /* Embeded Images */
+        #intextImages {
+            visibility: hidden;
+            /*  background-size: contain;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            aspect-ratio: 16/9; */
+            width: 100%;
+            height: 100%;
+
+            position: absolute;
+            top: 60vh;
+            left: 55%;
+        }
+
+        /* Adjust positioning for text containers */
+        .textContainer {
+            position: absolute;
+            top: 15%;
+            height: 520px;
+            width: 300px;
+            font-size: 32px;
+            border: 1px solid;
+        }
+
+        #textLeft {
+            left: 20%;
+            /* Start from the left side */
+        }
+
+        #textRight {
+            right: 15%;
+            /* Start from the right side */
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Book Background -->
+    <div id="backgrounds">
+        <img id="backgroundBookImage" src="/Users/joelpenton/Projects/Featurette/Images/book_fullscreen.png"
+            alt="backgroundBook" />
+    </div>
+
+    <!-- Typewriter text - Left side -->
+    <div class="textContainer" id="textLeft">
+        <span id="text"></span>
+
+    </div>
+
+    <!-- In-page Images -->
+    <div id="intextImages">
+        <img id="embededImages" src="/Users/joelpenton/Projects/Featurette/Images/background_image1_small.png"
+            alt="embededPictures" />
+    </div>
+
+    <!-- Typewriter text - Right side -->
+    <div class="textContainer" id="textRight">
+        <span id="textRightContent"></span>
+    </div>
+
+
+    <!-- Play/Pause button-->
+    <button id="playPauseButton">
+        <img id="playPauseImage" src="/Users/joelpenton/Projects/Featurette/Images/playbutton75.png"
+            alt="Play/Pause Image">
+    </button>
+
+    <script>
+        // script.js
+        const playPauseButton = document.getElementById("playPauseButton");
+        const playPauseImage = document.getElementById("playPauseImage");
+        const text = document.querySelector("#text");
+
+        let isPlaying = false; //Flag to play/pause the typewriter text
+        let intervalId = null;
+
+        playPauseButton.addEventListener("click", () => {
+            if (isPlaying) {
+                clearInterval(intervalId); // Pauses Interval
+                playPauseImage.src = "/Users/joelpenton/Projects/Featurette/Images/playbutton75.png"; // Switches button image
+
+            } else {
+                intervalId = setInterval(handleLoop, 30); // Plays Interval
+                playPauseImage.src = "/Users/joelpenton/Projects/Featurette/Images/pausebutton75.png"; // Switches button image
+            }
+
+            isPlaying = !isPlaying;
+        });
+
+        //Set Trigger Count
+        let triggerCount = 0;
+
+        //This is the text content to be displayed.
+        let textContentArray = "Leon awoke with a jolt as he heard a loud crash of lightning followed by the front door to his cabin opening. The sounds of the thunderstorm outside stabbing into his small cabin and his four loyal companion dogs barking and running around in a panic. Leon sprang up and rubbed his eyes, calling out to the dogs individually by name, alerted that the dogs are not in the room with him anymore. A flash of thunder through the window showed him that none of his dogs were by his side as they were when they went to bed. The dogs replied to Leon’s calls with more panicked barking from the living room. Leon throw his legs out from under the covers and got up. He called out for Rock and Roll, two of his dogs. He could hear the incessant barking getting further and further away. He grabbed his jeans and the shirt he was wearing yesterday and hastily put them back on. There was a rainstorm when they went to bed earlier but the thunder and lightning was new to him. He moved out of his bedroom and saw to his horror that the front door was wide open. The dogs were gone.".split("");
+
+
+        // Text containers
+        const textLeft = document.getElementById("textLeft");
+        const textRight = document.getElementById("textRight");
+        const textRightContent = document.getElementById("textRightContent");
+
+        const handleLoop = () => {
+            if (textContentArray.length) {
+                const char = textContentArray.shift(); // Get the first character
+
+                if (triggerCount >= 200) {
+                    // Move characters to the right side
+                    textRightContent.innerHTML += char;
+                } else {
+                    // Move characters to the left side
+                    text.innerHTML += char;
+                }
+
+                triggerCount++;
+
+                // Triggers in text
+                if (triggerCount === 1) {
+                    // Draw Image in text
+                    embededImages.src = "/Users/joelpenton/Projects/Featurette/Images/background_image2_small.png";
+                    document.getElementById("intextImages").style.visibility = "visible";
+                }
+
+                if (triggerCount === 50) {
+                    clearInterval(intervalID);
+                    playPauseImage.src = "/Users/joelpenton/Projects/Featurette/Images/playbutton75.png";
+                    isPlaying = false;
+                }
+            }
+        };
+
+
+
+
+
+    </script>
+</body>
+
+</html>

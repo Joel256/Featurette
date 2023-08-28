@@ -1,8 +1,80 @@
-<style>#typing-container {
-    font-family: Arial, sans-serif;
-    font-size: 24px;
-    padding: 20px;
-    border: 2px solid #ccc;
+/* Backgrounds */
+#backgrounds {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 
-</style>
+#book {
+    background-image: url(Images/book.png);
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    aspect-ratio: 16/9;
+    width: 100%;
+    height: 100%;
+}
+
+#backgroundImages {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* Play / Pause Button */
+#playPauseButton {
+    /* Make the background and border transparent */
+    background: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+
+    /* Make the mouse cursor change on hover */
+    cursor: pointer;
+
+    /* Overlay the button on the background image and position it */
+    position: absolute;
+    top: 70vh;
+    left: 47%;
+    width: 100px;
+    height: 100px;
+
+}
+
+/* Typewriter text */
+/* #text { */
+/* Overlay the text on the background image and position it */
+/*  position: absolute;
+    top: 17%;
+    left: 27%;
+    right: 70%;
+    bottom: 80%;
+    height: 480px;
+    width: 280px;
+    border: 1px solid #000000;
+    font-size: 32px;
+} */
+
+
+/* Adjust positioning for text containers */
+.textContainer {
+    position: absolute;
+    top: 17%;
+    height: 420px;
+    width: 240px;
+    /*   border: 1px solid #000000; */
+    font-size: 32px;
+    border: 1px solid;
+    overflow: hidden;
+}
+
+#textLeft {
+    left: 27%;
+    /* Start from the left side */
+}
+
+#textRight {
+    right: 25%;
+    /* Start from the right side */
+}

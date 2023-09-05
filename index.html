@@ -12,26 +12,20 @@
 
 <body>
     <!-- Backgrounds -->
-    <div id="backgrounds">
-        <img id="backgroundImages" src="/Users/joelpenton/Projects/Featurette/Images/background_test1.png"
-            alt="backgroundImageCabin1" />
-
-    </div>
-
     <!-- Book Image -->
-    <div id="book"> </div>
+    <div id="book">
+        <div id="bookWrapper">
+            <!-- Typewriter text - Left side -->
+            <div class="textContainer" id="textLeftContainer">
+                <span id="textLeftContent"></span>
+            </div>
 
-    <!-- Typewriter text - Left side -->
-    <div class="textContainer" id="textLeft">
-        <span id="textLeftContent"></span>
+            <!-- Typewriter text - Right side -->
+            <div class="textContainer" id="textRightContainer">
+                <span id="textRightContent"></span>
+            </div>
+        </div>
     </div>
-
-    <!-- Typewriter text - Right side -->
-    <div class="textContainer" id="textRight">
-        <span id="textRightContent"></span>
-    </div>
-
-
 
     <!-- Play/Pause button-->
     <button id="playPauseButton">
@@ -40,7 +34,9 @@
     </button>
 
 
-    <script src="script.js"> </script>
 </body>
+
+<script src="script.js"> </script>
+
 
 </html>

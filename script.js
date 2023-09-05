@@ -26,6 +26,8 @@ let textContentArray = "Leon awoke with a jolt as he heard a loud crash of light
 
 
 // Text containers
+const textLeftContainer = document.getElementById("textLeftContainer");
+const textRightContainer = document.getElementById("textRightContainer");
 const textLeftContent = document.getElementById("textLeftContent");
 const textRightContent = document.getElementById("textRightContent");
 
@@ -33,26 +35,22 @@ const handleLoop = () => {
     if (textContentArray.length) {
         const char = textContentArray.shift(); // Get the first character
 
-        const textLeftOverflow = textLeftContent.scrollHeight > textLeftContent.clientHeight;
-        const textRightOverflow = textRightContent.scrollHeight > textRightContent.clientHeight;
+        const textLeftOverflow = textLeftContent.offsetHeight >= textLeftContainer.offsetHeight;
+        const textRightOverflow = textRightContent.offsetHeight >= textRightContainer.offsetHeight;
+
+        //console.log("l overflow?: " + textLeftOverflow)
+        //console.log("r overflow?: " + textRightOverflow)
+
+        console.log(textLeftContent.offsetHeight)
 
         // Switch container if overflow occurs
         if (textLeftIsWriting && textLeftOverflow) {
             textLeftIsWriting = false;
         } else if (!textLeftIsWriting && textRightOverflow) {
             textLeftIsWriting = true;
+            textLeftContent.innerHTML = ""
+            textRightContent.innerHTML = ""
         }
-
-        // Check if the text in the left div has reached its bottom
-        //        if (textLeftIsWriting && textLeftContent.scrollHeight > textLeftContent.clientHeight) {
-        //            textLeftIsWriting = false;
-        //        }
-
-        // Check if the text in the right div has reached its bottom
-        //        if (!textLeftIsWriting && textRightContent.scrollHeight > textRightContent.clientHeight) {
-        //            textLeftIsWriting = true;
-        //        }
-
 
         // Append the character to the appropriate side
         if (textLeftIsWriting) {

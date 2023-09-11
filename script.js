@@ -31,17 +31,15 @@ const textRightContainer = document.getElementById("textRightContainer");
 const textLeftContent = document.getElementById("textLeftContent");
 const textRightContent = document.getElementById("textRightContent");
 
+/*
 const handleLoop = () => {
     if (textContentArray.length) {
         const char = textContentArray.shift(); // Get the first character
 
         const textLeftOverflow = textLeftContent.offsetHeight >= textLeftContainer.offsetHeight;
         const textRightOverflow = textRightContent.offsetHeight >= textRightContainer.offsetHeight;
+        const insertedImage = document.getElementById("insertedImages");
 
-        //console.log("l overflow?: " + textLeftOverflow)
-        //console.log("r overflow?: " + textRightOverflow)
-
-        console.log(textLeftContent.offsetHeight)
 
         // Switch container if overflow occurs
         if (textLeftIsWriting && textLeftOverflow) {
@@ -52,15 +50,48 @@ const handleLoop = () => {
             textRightContent.innerHTML = ""
         }
 
+
+        //Insert Images in with the text
+        if (triggerCount === 50) {
+            insertedImage.src = "/Users/joelpenton/Projects/Featurette/Images/background_image1_small.png"
+            document.body.appendChild(insertedImage);
+
+        }
+
         // Append the character to the appropriate side
         if (textLeftIsWriting) {
             textLeftContent.innerHTML += char;
         } else {
             textRightContent.innerHTML += char;
         }
+        //Increments Trigger Count so we can have specific triggers at specific times.
+        triggerCount++;
     }
 };
 
+*/
+
+const insertedImage = document.getElementById("insertedImages");
+
+const handleLoop = () => {
+    if (textContentArray.length) {
+        const char = textContentArray.shift();
+
+        // Check if it's time to insert the image
+        if (triggerCount === 50) {
+            insertedImage.style.visibility = "visible";
+        }
+
+        // Append the character to the appropriate side
+        if (textLeftIsWriting) {
+            textLeftContent.innerHTML += char;
+        } else {
+            textRightContent.innerHTML += char;
+        }
+
+        triggerCount++;
+    }
+};
 
 
 

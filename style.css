@@ -3,20 +3,16 @@
     /* Make the background and border transparent */
     background: rgba(0, 0, 0, 0);
     border-color: rgba(0, 0, 0, 0);
-
-    margin-left: 45%;
-
+    display: flex;
+    margin: auto;
     /* Make the mouse cursor change on hover */
     cursor: pointer;
 
-    /* Overlay the button on the background image and position it */
 }
 
 #book {
     display: flex;
-    width: 50%;
-    margin-left: 25%;
-    margin-top: 25%;
+    margin: auto;
 }
 
 #bookWrapper {
@@ -24,30 +20,49 @@
     background-position: 50%;
     background-repeat: no-repeat;
     width: 100%;
-    padding-left: 50px;
-    margin-left: -50px;
-    padding-right: 50px;
-    margin-right: -50px;
+    margin: auto;
+
 }
 
 /* Adjust positioning for text containers */
 .textContainer {
     display: absolute;
-    background-color: beige;
-    top: 17%;
-    height: 416px;
+    background-image: url(/Users/joelpenton/Projects/Featurette/Images/pages_texture.png);
+    /*background-color: beige;*/
+    top: 20%;
+    height: 640px;
     width: 100%;
-    /*   border: 1px solid #000000; */
-    font-size: 32px;
     border: 1px solid;
-    overflow: hidden;
-    text-overflow: clip;
+
+    /* Text dispalyed on both pages */
+    font-size: 32px;
+    text-align: left;
+    padding: 15px;
+    padding-bottom: 40px;
+
 }
 
-#textLeftContainer {
+#insertedImages {
+    visibility: hidden;
+    height: 100%;
+    width: 100%;
 }
 
+#imageContainer {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    transform: translateX(-50%);
+    visibility: hidden;
+    float: right;
+    margin: 10px;
+
+
+}
+
+#textLeftContainer,
 #textRightContainer {
+    overflow: auto;
+    width: calc(50% - 20px);
+    float: left;
 }
-
-

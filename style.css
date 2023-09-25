@@ -1,68 +1,110 @@
 /* Play / Pause Button */
 #playPauseButton {
-    /* Make the background and border transparent */
     background: rgba(0, 0, 0, 0);
     border-color: rgba(0, 0, 0, 0);
     display: flex;
-    margin: auto;
-    /* Make the mouse cursor change on hover */
     cursor: pointer;
 
 }
 
+/* Next Page button */
+.nextPageContainer {
+    position: absolute;
+    right: 75%;
+    top: 0;
+}
+
 #book {
     display: flex;
+    flex-direction: column;
+    /* Arrange the elements in a column layout */
+    align-items: center;
+    /* Center-align the elements horizontally */
     margin: auto;
+    position: relative;
+    bottom: 100px;
 }
 
 #bookWrapper {
     display: flex;
     background-position: 50%;
     background-repeat: no-repeat;
-    width: 100%;
-    margin: auto;
+    width: 80%;
+    height: 80%;
+    margin: 10%;
+}
 
+h1 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 0px 0px 5px #fff;
 }
 
 /* Adjust positioning for text containers */
 .textContainer {
     display: absolute;
     background-image: url(/Users/joelpenton/Projects/Featurette/Images/pages_texture.png);
-    /*background-color: beige;*/
-    top: 20%;
-    height: 640px;
+    height: 600px;
     width: 100%;
-    border: 1px solid;
-
-    /* Text dispalyed on both pages */
-    font-size: 32px;
+    /* Text displayed on both pages */
+    font-size: 24px;
     text-align: left;
-    padding: 15px;
-    padding-bottom: 40px;
-
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#imageContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Ensure it's behind other content */
+    background-image: url('/Users/joelpenton/Projects/Featurette/Images/background_test1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*
 #insertedImages {
     visibility: hidden;
     height: 100%;
     width: 100%;
-}
+} */
 
-#imageContainer {
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    transform: translateX(-50%);
-    visibility: hidden;
-    float: right;
-    margin: 10px;
-
-
-}
-
+/* This is needed for the middle border */
 #textLeftContainer,
 #textRightContainer {
     overflow: auto;
     width: calc(50% - 20px);
     float: left;
+    position: relative;
+    padding: 20px;
+}
+
+/* The middle border pseudo-element */
+#textLeftContainer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 3px;
+    background-color: #000;
+    margin-top: 5%;
+    margin-bottom: 15%;
+}
+
+/* Button container */
+#ButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Align the button to the top */
+    margin-top: 20px;
+    /* Adjust the margin as needed to control spacing */
+    position: absolute;
+    /* Position the button container absolutely */
+    top: 77%;
+    /* Position it below the text containers */
 }

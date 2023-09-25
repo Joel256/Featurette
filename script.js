@@ -10,10 +10,10 @@ let textLeftIsWriting = true;
 playPauseButton.addEventListener("click", () => {
     if (isPlaying) {
         clearInterval(intervalId); // Pauses Interval
-        playPauseImage.src = "Images/playbutton.png"; // Switches button image
+        playPauseImage.src = "Images/playbutton50.png"; // Switches button image
     } else {
         intervalId = setInterval(handleLoop, 30); // Plays Interval
-        playPauseImage.src = "Images/pausebutton.png"; // Switches button image
+        playPauseImage.src = "Images/pausebutton50.png"; // Switches button image
     }
     isPlaying = !isPlaying;
 });
@@ -78,8 +78,10 @@ const handleLoop = () => {
         const char = textContentArray.shift();
 
         // Check if it's time to insert the image
-        if (triggerCount === 50) {
-            insertedImage.style.visibility = "visible";
+        if (triggerCount === 10) {
+            //Updates background image at 10 characters.
+            insertedImage.src = '/Users/joelpenton/Projects/Featurette/Images/background_test2.png';
+
         }
 
         // Append the character to the appropriate side
@@ -102,37 +104,37 @@ const handleLoop = () => {
 //    if (textContentArray.length) {
 //        const char = textContentArray.shift(); // Get the first character
 
-        // const getTextLeftHeight = () => document.getElementById('textLeft').clientHeight;
-        // const getTextRightHeight = () => document.getElementById('textRight').clientHeight;
+// const getTextLeftHeight = () => document.getElementById('textLeft').clientHeight;
+// const getTextRightHeight = () => document.getElementById('textRight').clientHeight;
 
-        //const textRightHeight = document.getElementById('textRight').clientHeight;
+//const textRightHeight = document.getElementById('textRight').clientHeight;
 
-        // Check if the text in the left div has reached its bottom
+// Check if the text in the left div has reached its bottom
 //        if (textLeftIsWriting && textLeftContent.scrollHeight > textLeftContent.clientHeight) {
 //            textLeftIsWriting = false;
 //        }
 
-        // Check if the text in the right div has reached its bottom
+// Check if the text in the right div has reached its bottom
 //        if (!textLeftIsWriting && textRightContent.scrollHeight > textRightContent.clientHeight) {
 //            textLeftIsWriting = true;
 //        }
 
 
-        // if (document.getElementById('textLeftContent').offsetHeight >= document.getElementById('textLeft').style.height) {
-        //       textLeftIsWriting = false;
-        //     }
+// if (document.getElementById('textLeftContent').offsetHeight >= document.getElementById('textLeft').style.height) {
+//       textLeftIsWriting = false;
+//     }
 
-        // if (document.getElementById('textRightContent').offsetHeight > document.getElementById('textRight').style.height) {
+// if (document.getElementById('textRightContent').offsetHeight > document.getElementById('textRight').style.height) {
 
-        //clear out textLeftContent
-        //textLeftContent.innerHTML = ""
+//clear out textLeftContent
+//textLeftContent.innerHTML = ""
 
-        //clear out textRightContent
-        //textRightContent.innerHTML = ""
+//clear out textRightContent
+//textRightContent.innerHTML = ""
 
-        //  textLeftIsWriting = true
-        //}
-        // Append the character to the appropriate side
+//  textLeftIsWriting = true
+//}
+// Append the character to the appropriate side
 //        if (textLeftIsWriting) {
 //            textLeftContent.innerHTML += char;
 //        } else {
@@ -141,19 +143,19 @@ const handleLoop = () => {
 
 
 
- //       triggerCount++;
+//       triggerCount++;
 
-        // Triggers in text
+// Triggers in text
 //        if (triggerCount === 25) {
-            // Change Background
+// Change Background
 //            document.getElementById("backgroundImages").src = "/Users/joelpenton/Projects/Featurette/Images/background_test2.png";
 //        }
 
-        // if (triggerCount === 50) {
-        //     clearInterval(intervalId);
-        //     playPauseImage.src = "/Users/joelpenton/Projects/Featurette/Images/playbutton.png";
-        //     isPlaying = false;
-        // }
+// if (triggerCount === 50) {
+//     clearInterval(intervalId);
+//     playPauseImage.src = "/Users/joelpenton/Projects/Featurette/Images/playbutton.png";
+//     isPlaying = false;
+// }
 //    }
 //};
 

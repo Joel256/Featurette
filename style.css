@@ -2,8 +2,9 @@
 #playPauseButton {
     background: rgba(0, 0, 0, 0);
     border-color: rgba(0, 0, 0, 0);
-    display: flex;
     cursor: pointer;
+    display: flex;
+
 
 }
 
@@ -22,7 +23,7 @@
     /* Center-align the elements horizontally */
     margin: auto;
     position: relative;
-    bottom: 100px;
+
 }
 
 #bookWrapper {
@@ -31,7 +32,7 @@
     background-repeat: no-repeat;
     width: 80%;
     height: 80%;
-    margin: 10%;
+
 }
 
 h1 {
@@ -52,6 +53,12 @@ h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#mediaControls {
+    display: flex;
+    background-image: url(/Users/joelpenton/Projects/Featurette/Images/pages_texture.png);
+    width: 80%;
+}
+
 #imageContainer {
     position: fixed;
     top: 0;
@@ -64,13 +71,6 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-/*
-#insertedImages {
-    visibility: hidden;
-    height: 100%;
-    width: 100%;
-} */
 
 /* This is needed for the middle border */
 #textLeftContainer,
@@ -95,16 +95,40 @@ h1 {
     margin-bottom: 15%;
 }
 
-/* Button container */
+
+
 #ButtonContainer {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    /* Align the button to the top */
+    align-items: center;
+    height: 100%;
+    width: 100%;
     margin-top: 20px;
-    /* Adjust the margin as needed to control spacing */
+    position: relative;
+}
+
+#nextPageButtonContainer {
+    display: flex;
     position: absolute;
-    /* Position the button container absolutely */
-    top: 77%;
-    /* Position it below the text containers */
+    right: 25%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#previousPageButtonContainer {
+    display: flex;
+    position: absolute;
+    left: 25%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#nextPageButton,
+#previousPageButton {
+    border: 0;
+    background: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
 }

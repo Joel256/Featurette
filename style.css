@@ -44,7 +44,7 @@ h1 {
 /* Adjust positioning for text containers */
 .textContainer {
     display: absolute;
-    background-image: url(/Users/joelpenton/Projects/Featurette/Images/pages_texture.png);
+    background-image: url(./Images/pages_texture.png);
     height: 600px;
     width: 100%;
     /* Text displayed on both pages */
@@ -55,7 +55,7 @@ h1 {
 
 #mediaControls {
     display: flex;
-    background-image: url(/Users/joelpenton/Projects/Featurette/Images/pages_texture.png);
+    background-image: url(./Images/pages_texture.png);
     width: 80%;
 }
 
@@ -67,7 +67,7 @@ h1 {
     height: 100%;
     z-index: -1;
     /* Ensure it's behind other content */
-    background-image: url('/Users/joelpenton/Projects/Featurette/Images/background_test1.png');
+    background-image: url('./Images/background_test1.png');
     background-repeat: no-repeat;
     background-size: cover;
 }

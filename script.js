@@ -10,15 +10,19 @@ let intervalId = null;
 let textLeftIsWriting = true;
 
 playPauseButton.addEventListener("click", () => {
+    toggleIsPlaying();
+});
+
+const toggleIsPlaying = () => {
     if (isPlaying) {
         clearInterval(intervalId); // Pauses Interval
-        playPauseImage.src = "Images/playbutton50.png"; // Switches button image
+        playPauseImage.src = "./Images/playbutton50.png"; // Switches button image
     } else {
         intervalId = setInterval(handleLoop, 30); // Plays Interval
-        playPauseImage.src = "Images/pausebutton50.png"; // Switches button image
+        playPauseImage.src = "./Images/pausebutton50.png"; // Switches button image
     }
     isPlaying = !isPlaying;
-});
+}
 
 //Set Trigger Count
 let triggerCount = 0;
@@ -43,8 +47,7 @@ const handleLoop = () => {
         const char = textContentArray.shift(); // Get the first character
         const textLeftOverflow = textLeftContent.offsetHeight >= textLeftContainer.offsetHeight;
         const textRightOverflow = textRightContent.offsetHeight >= textRightContainer.offsetHeight;
-
-
+        //console.log(nextPageCount)
 
         // Switch container if overflow occurs
         if (textLeftIsWriting && textLeftOverflow) {
@@ -60,12 +63,10 @@ const handleLoop = () => {
             nextPageNumber.innerHTML = nextPageCount;
         }
 
-
-
         // Check if it's time to insert the image
         if (triggerCount === 10) {
             //Updates background image at 10 characters.
-            insertedImage.src = '/Users/joelpenton/Projects/Featurette/Images/background_test2.png';
+            insertedImage.src = './Images/background_test2.png';
 
         }
 
@@ -80,180 +81,13 @@ const handleLoop = () => {
     }
 };
 
-
-
-/*
-
 nextButton.addEventListener("click", () => {
-    const textLeftOverflow = textLeftContent.scrollHeight > textLeftContainer.clientHeight;
-    const textRightOverflow = textRightContent.scrollHeight > textRightContainer.clientHeight;
-
-    if (textLeftIsWriting && textLeftOverflow) {
-        textLeftIsWriting = false;
-    } else if (!textLeftIsWriting && textRightOverflow) {
-        textLeftIsWriting = true;
-        textLeftContent.innerHTML = "";
-        textRightContent.innerHTML = "";
-        // Next and Previous page counts
-        previousPageCount += 2;
-        nextPageCount += 2;
-        previousPageNumber.innerHTML = previousPageCount;
-        nextPageNumber.innerHTML = nextPageCount;
-    }
-
-    // Clear any existing interval and start a new one
     clearInterval(intervalId);
-    intervalId = setInterval(handleLoop, 30);
-});
-
-
-/*
-nextButton.addEventListener("click", () => {
-    intervalId = setInterval(handleLoop, 3000);
-    if (textLeftIsWriting && textLeftOverflow) {
-        textLeftIsWriting = false;
-    } else if (!textLeftIsWriting && textRightOverflow) {
-        textLeftIsWriting = true;
-        textLeftContent.innerHTML = ""
-        textRightContent.innerHTML = ""
-        //Next and Previous page counts
-        previousPageCount += 2;
-        nextPageCount += 2;
-        previousPageNumber.innerHTML = previousPageCount;
-        nextPageNumber.innerHTML = nextPageCount;
-    }
-});
-
-nextButton.addEventListener("click", () => {
-clearInterval(intervalId);
-const targetPage = nextPageCount += 2;
-while (targetPage > nextPageCount) {
-
+    const targetPage = nextPageCount + 2;
     console.log(targetPage);
-    handleLoop();
-}
-});
-
-
-/*
-const targetPage = nextPageCount += 2;
-while (targetPage > nextPageCount) {
-
-    console.log(targetPage);
-    handleLoop();
-}
-});
-
-
-
-/*
-
-
-
-    //Insert Images in with the text
-    if (triggerCount === 50) {
-        insertedImage.src = "/Users/joelpenton/Projects/Featurette/Images/background_image1_small.png"
-        document.body.appendChild(insertedImage);
- 
+    console.log(nextPageCount);
+    while (targetPage > nextPageCount) {
+        handleLoop();
     }
- 
-    // Append the character to the appropriate side
-    if (textLeftIsWriting) {
-        textLeftContent.innerHTML += char;
-    } else {
-        textRightContent.innerHTML += char;
-    }
-    //Increments Trigger Count so we can have specific triggers at specific times.
-    triggerCount++;
-}
-
-
-
-const insertedImage = document.getElementById("insertedImages");
-
-const handleLoop = () => {
-if (textContentArray.length) {
-const char = textContentArray.shift();
-
-// Check if it's time to insert the image
-if (triggerCount === 10) {
-//Updates background image at 10 characters.
-insertedImage.src = '/Users/joelpenton/Projects/Featurette/Images/background_test2.png';
-
-}
-
-// Append the character to the appropriate side
-if (textLeftIsWriting) {
-textLeftContent.innerHTML += char;
-} else {
-textRightContent.innerHTML += char;
-}
-
-triggerCount++;
-}
-};
-
-
-
-
-
-
-//const handleLoop = () => {
-//    if (textContentArray.length) {
-//        const char = textContentArray.shift(); // Get the first character
-
-// const getTextLeftHeight = () => document.getElementById('textLeft').clientHeight;
-// const getTextRightHeight = () => document.getElementById('textRight').clientHeight;
-
-//const textRightHeight = document.getElementById('textRight').clientHeight;
-
-// Check if the text in the left div has reached its bottom
-//        if (textLeftIsWriting && textLeftContent.scrollHeight > textLeftContent.clientHeight) {
-//            textLeftIsWriting = false;
-//        }
-
-// Check if the text in the right div has reached its bottom
-//        if (!textLeftIsWriting && textRightContent.scrollHeight > textRightContent.clientHeight) {
-//            textLeftIsWriting = true;
-//        }
-
-
-// if (document.getElementById('textLeftContent').offsetHeight >= document.getElementById('textLeft').style.height) {
-//       textLeftIsWriting = false;
-//     }
-
-// if (document.getElementById('textRightContent').offsetHeight > document.getElementById('textRight').style.height) {
-
-//clear out textLeftContent
-//textLeftContent.innerHTML = ""
-
-//clear out textRightContent
-//textRightContent.innerHTML = ""
-
-//  textLeftIsWriting = true
-//}
-// Append the character to the appropriate side
-//        if (textLeftIsWriting) {
-//            textLeftContent.innerHTML += char;
-//        } else {
-//            textRightContent.innerHTML += char;
-//        }
-
-
-
-//       triggerCount++;
-
-// Triggers in text
-//        if (triggerCount === 25) {
-// Change Background
-//            document.getElementById("backgroundImages").src = "/Users/joelpenton/Projects/Featurette/Images/background_test2.png";
-//        }
-
-// if (triggerCount === 50) {
-//     clearInterval(intervalId);
-//     playPauseImage.src = "/Users/joelpenton/Projects/Featurette/Images/playbutton.png";
-//     isPlaying = false;
-// }
-//    }
-//};
-*/
+    intervalId = setInterval(handleLoop, 30); // Plays Interval
+});

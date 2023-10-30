@@ -8,7 +8,6 @@ const previousButton = document.getElementById("previousPageButton");
 let isPlaying = false; //Flag to play/pause the typewriter text
 let intervalId = null;
 let textLeftIsWriting = true;
-//let textRightIsWriting = false;
 
 playPauseButton.addEventListener("click", () => {
     toggleIsPlaying();
@@ -25,7 +24,7 @@ const toggleIsPlaying = () => {
     isPlaying = !isPlaying;
 }
 
-//Set Trigger Count for displaying text
+//Set Trigger Count
 let triggerCount = 0;
 
 //This is the text content to be displayed.
@@ -42,16 +41,13 @@ let previousPageCount = 1;
 let nextPageCount = 2;
 const previousPageNumber = document.getElementById("previousPageNumber");
 const nextPageNumber = document.getElementById("nextPageNumber");
-//const textLeftOverflow = textLeftContent.offsetHeight >= textLeftContainer.offsetHeight;
-//const textRightOverflow = textRightContent.offsetHeight >= textRightContainer.offsetHeight;
-
 
 const handleLoop = () => {
     if (textContentArray.length) {
         const char = textContentArray.shift(); // Get the first character
         const textLeftOverflow = textLeftContent.offsetHeight >= textLeftContainer.offsetHeight;
         const textRightOverflow = textRightContent.offsetHeight >= textRightContainer.offsetHeight;
-        console.log(nextPageCount)
+        //console.log(nextPageCount)
 
         // Switch container if overflow occurs
         if (textLeftIsWriting && textLeftOverflow) {
@@ -61,13 +57,11 @@ const handleLoop = () => {
             textLeftContent.innerHTML = ""
             textRightContent.innerHTML = ""
             //Next and Previous page counts
-            previousPageCount - 2;
-            nextPageCount + 2;
+            previousPageCount += 2;
+            nextPageCount += 2;
             previousPageNumber.innerHTML = previousPageCount;
             nextPageNumber.innerHTML = nextPageCount;
-        } //else if (textLeftIsWriting && textRightOverflow) {
-        //intervalId = setInterval(30);
-        //}
+        }
 
         // Check if it's time to insert the image
         if (triggerCount === 10) {
@@ -89,16 +83,11 @@ const handleLoop = () => {
 
 nextButton.addEventListener("click", () => {
     clearInterval(intervalId);
-    let targetPage = nextPageCount + 2;
+    const targetPage = nextPageCount + 2;
     console.log(targetPage);
     console.log(nextPageCount);
     while (targetPage > nextPageCount) {
-        if (nextPageCount = targetPage + 1) {
-            handleLoop();
-            intervalId = setInterval(handleLoop, 1); // Plays Interval
-
-        }
-
+        handleLoop();
     }
-    //Speed up handle loop and make it stop when it switches from left to right or Right to left. 
+    intervalId = setInterval(handleLoop, 30); // Plays Interval
 });

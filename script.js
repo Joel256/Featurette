@@ -9,6 +9,7 @@ let isPlaying = false; //Flag to play/pause the typewriter text
 let intervalId = null;
 let textLeftIsWriting = true;
 
+//Play button
 playPauseButton.addEventListener("click", () => {
     toggleIsPlaying();
 });
@@ -38,12 +39,14 @@ const textRightContainer = document.getElementById("textRightContainer");
 const textLeftContent = document.getElementById("textLeftContent");
 const textRightContent = document.getElementById("textRightContent");
 const insertedImage = document.getElementById("insertedImages");
+const insertedSfx = document.getElementById("insertedSfx")
 let previousPageCount = 1;
 let nextPageCount = 2;
 const previousPageNumber = document.getElementById("previousPageNumber");
 const nextPageNumber = document.getElementById("nextPageNumber");
 
 
+//Dispaly typewriter text
 const handleLoop = () => {
     if (textContentArray.length) {
         const char = textContentArray[currentTextIdx]; // Get the first character
@@ -71,7 +74,13 @@ const handleLoop = () => {
         if (triggerCount === 10) {
             //Updates background image at 10 characters.
             insertedImage.src = './Images/background_test2.png';
+        }
 
+        // Check if it's time to insert a Sound Effect
+        if (triggerCount === 20) {
+            //Updates background image at 10 characters.
+            insertedSfx.src = './Audio/Lightning_strike_1_SFX.mp3';
+            //insertedSfx.play();
         }
 
         // Append the character to the appropriate side
@@ -85,6 +94,7 @@ const handleLoop = () => {
     }
 };
 
+//Next Button
 nextButton.addEventListener("click", () => {
     clearInterval(intervalId);
     const targetPage = nextPageCount + 2;
@@ -103,6 +113,7 @@ nextButton.addEventListener("click", () => {
     intervalId = setInterval(handleLoop, 30); // Plays Interval
 });
 
+//Previous button
 previousButton.addEventListener("click", () => {
     console.log(textHistoryList);
     if (textHistoryList.length > 1) {
@@ -114,11 +125,16 @@ previousButton.addEventListener("click", () => {
         previousPageNumber.innerHTML = previousPageCount;
         nextPageNumber.innerHTML = nextPageCount;
 
-
         textHistoryList.pop();
         currentTextIdx = textHistoryList[textHistoryList.length - 1];
         console.log(currentTextIdx);
         console.log(textHistoryList);
         intervalId = setInterval(handleLoop, 30); // Plays Interval
     }
+});
+
+// SFX has finished playing
+audioElement.addEventListener("ended", () => {
+    audioElement.pause(); // Pauses the audio
+    // Or you can use audioElement.currentTime = 0; to reset and stop it
 });
